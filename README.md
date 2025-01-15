@@ -32,9 +32,6 @@ Contributions are welcome! To contribute, follow these steps:
 4. Push to the branch.
 5. Submit a pull request.
 
-### License
-This project is licensed under the MIT License. See the LICENSE file for more details.
-
 ### Contact
 For more information or questions, you can reach me at:
 
