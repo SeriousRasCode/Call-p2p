@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2P Video Call</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        #myVideo {
+            width: 25%;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #theirVideo {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Drawer Menu Styles */
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+            transition: left 0.3s ease;
+            z-index: 1000;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        .drawer.open {
+            left: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .drawer-content p {
+            margin: 0.5rem 0;
+        }
+
+        .drawer-toggle {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .close-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (min-width: 768px) {
+            .video-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            #myVideo {
+                width: 20%;
+            }
+
+            main {
+                padding: 2rem;
+            }
+
+            .btn {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .video-container {
+                max-width: 900px;
+            }
+
+            .btn {
+                font-size: 1.5rem;
+            }
+
+            header {
+                font-size: 1.5rem;
+            }
+
+            footer {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="https://unpkg.com/peerjs@1.5.3/dist/peerjs.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>P2P Video Call</h1>
+            <button class="drawer-toggle" onclick="toggleDrawer()">About Me</button>
+        </header>
+        <div id="drawer" class="drawer">
+            <div class="drawer-header">
+                <h2>About Me</h2>
+                <button class="close-btn" onclick="toggleDrawer()">Close</button>
+            </div>
+            <div class="drawer-content">
+                <p><strong>Name:</strong> Tedros Teshome</p>
+                <p><strong>Year:</strong> 3rd year software engineering student</p>
+                <p><strong>Email:</strong> tedroszion@gmail.com</p>
+                <p><strong>Telegram:</strong> @seriousras</p>
+            </div>
+        </div>
+        <main>
+            <div class="video-container">
+                <video id="theirVideo" autoplay></video>
+                <video id="myVideo" autoplay muted></video>
+            </div>
+            <button id="callButton" class="btn">Call</button>
+        </main>
+        <footer>
+            <p>&copy; 2025 P2P Video Call</p>
+        </footer>
+    </div>
+    <script src="main2.js"></script> <!-- Or main.js for the first device -->
+    <script>
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawer');
+            drawer.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
