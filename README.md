@@ -7,8 +7,7 @@ P2P Video Call is a web-based application that enables peer-to-peer video callin
 1. [Installation](#installation)
 2. [Usage](#usage)
 3. [Contributing](#contributing)
-4. [License](#license)
-5. [Contact](#contact)
+4. [Contact](#contact)
 
 ### Installation
 Follow these steps to set up the project:
