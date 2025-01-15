@@ -1,7 +1,3 @@
-Absolutely, here’s the formatted README without the code:
-
----
-
 # P2P Video Call
 
 ### Description
@@ -45,7 +41,3 @@ For more information or questions, you can reach me at:
 - **Name:** Tedros Teshome
 - **Email:** [tedroszion@gmail.com](mailto:tedroszion@gmail.com)
 - **Telegram:** [@seriousras](https://t.me/seriousras)
-
----
-
-Feel free to copy and paste this directly into your project. Let me know if there's anything else you need!
